@@ -4,8 +4,8 @@ class Subject extends Component {
   render() {
     return (
       <header>
-        <h1>WEB</h1>
-        world wide web!
+        <h1>{this.props.title}</h1>
+        <h2>{this.props.subject}</h2>
       </header>
     );
   }

@@ -8,13 +8,18 @@ class App extends Component {
     super(props);
     this.state = {
       subject: { title: "WEB", sub: "World Wid Web!" },
+      contents: [
+        { id: 1, title: "html", desc: "HTML is HyperTextMarkupLanguage" },
+        { id: 2, title: "html", desc: "HTML is HyperTextMarkupLanguage" },
+        { id: 3, title: "html", desc: "HTML is HyperTextMarkupLanguage" },
+      ],
     };
   }
   render() {
     return (
       <div>
         <Subject title={this.state.subject.title} subject={this.state.subject.sub}></Subject>
-        <TOC></TOC>
+        <TOC data={this.state.contents}></TOC>
         <Content></Content>
       </div>
     );
