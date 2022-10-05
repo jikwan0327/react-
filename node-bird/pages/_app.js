@@ -5,12 +5,12 @@ import Head from "next/head";
 
 function NodeBird({ Component, pageProps }) {
   return (
-    <AppLayout>
+    <>
       <Head>
         <title>NodeBird</title>
       </Head>
       <Component {...pageProps} />
-    </AppLayout>
+    </>
   );
 }
 
