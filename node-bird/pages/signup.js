@@ -4,6 +4,7 @@ import { useCallback, useState } from "react";
 import styled from "styled-components";
 import AppLayout from "../components/AppLayout";
 import useInput from "../hooks/useInput";
+import { composeWithDevTools } from "@reduxjs/toolkit/dist/devtoolsExtension";
 
 const SignUp = () => {
   const [id, onChangeId] = useInput("");

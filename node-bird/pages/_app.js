@@ -1,7 +1,7 @@
-import AppLayout from "../components/AppLayout";
 import PropTypes from "prop-types";
 import "../styles/globals.css";
 import Head from "next/head";
+import wrapper from "../store/configureStore";
 
 function NodeBird({ Component, pageProps }) {
   return (
@@ -18,4 +18,4 @@ NodeBird.propTypes = {
   Component: PropTypes.elementType.isRequired,
 };
 
-export default NodeBird;
+export default wrapper.withRedux(NodeBird);
