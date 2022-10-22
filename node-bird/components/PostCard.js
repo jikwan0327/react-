@@ -1,8 +1,9 @@
 import { RetweetOutlined, HeartTwoTone, HeartOutlined, MessageOutlined, EllipsisOutlined } from "@ant-design/icons";
-import { Avatar, Button, Card, Popover } from "antd";
+import { Avatar, Button, Card, Comment, List, Popover } from "antd";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
+import CommentForm from "./CommentForm";
 import PostImages from "./PostImages";
 import { useCallback, useState } from "react";
 
@@ -35,7 +36,7 @@ const PostCard = ({ post }) => {
                 {id && post.User.id === id ? (
                   <>
                     <Button>수정</Button>
-                    <Button type="danger ">삭제</Button>
+                    <Button type="danger">삭제</Button>
                   </>
                 ) : (
                   <Button>신고</Button>
@@ -54,9 +55,25 @@ const PostCard = ({ post }) => {
         />
         <Button></Button>
       </Card>
-      {commentFormOpened && <div>댓글부분</div>}
-      {/* <CommentForm />
-      <Comments /> */}
+      {commentFormOpened && (
+        <>
+          <CommentForm post={post} />
+          <List
+            header={`${post.Comments.length} 댓글`}
+            itemLayout="horizontal"
+            dataSource={post.Comments}
+            renderItem={(item) => (
+              <li>
+                <Comment
+                  author={item?.User.nickname}
+                  avatar={<Avatar>{item.User.nickname[0]}</Avatar>}
+                  content={item.content}
+                />
+              </li>
+            )}
+          />
+        </>
+      )}
     </div>
   );
 };
@@ -69,7 +86,7 @@ PostCard.propTypes = {
     User: PropTypes.object,
     content: PropTypes.string,
     createdAt: PropTypes.object,
-    Comments: PropTypes.arrayOf(PropTypes.object),
-    Images: PropTypes.arrayOf(PropTypes.object),
+    Comments: PropTypes.arrayOf(PropTypes.any),
+    Images: PropTypes.arrayOf(PropTypes.any),
   }).isRequired,
 };
